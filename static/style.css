@@ -1,0 +1,386 @@
+
+/* ==============================
+   GLOBAL RESET
+============================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #eef2ff;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+
+/* ==============================
+   MAIN APPLICATION
+============================== */
+
+.app-container {
+    width: 100%;
+    max-width: 950px;
+    height: 88vh;
+    background: white;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+}
+
+
+/* ==============================
+   HEADER
+============================== */
+
+.header {
+    background: #4f46e5;
+    color: white;
+    padding: 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header h1 {
+    font-size: 25px;
+    margin-bottom: 5px;
+}
+
+.header p {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+.clear-button {
+    background: white;
+    color: #4f46e5;
+    border: none;
+    padding: 11px 17px;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.clear-button:hover {
+    background: #e0e7ff;
+}
+
+
+/* ==============================
+   CHAT AREA
+============================== */
+
+.chat-box {
+    flex: 1;
+    padding: 22px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.message {
+    max-width: 85%;
+    padding: 14px 17px;
+    border-radius: 12px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.user-message {
+    align-self: flex-end;
+    background: #4f46e5;
+    color: white;
+    border-bottom-right-radius: 3px;
+}
+
+.assistant-message {
+    align-self: flex-start;
+    background: #f1f5f9;
+    color: #1e293b;
+    border-bottom-left-radius: 3px;
+}
+
+.message-content {
+    font-size: 15px;
+}
+
+
+/* ==============================
+   MARKDOWN FORMATTING
+============================== */
+
+/* AI response text */
+
+.assistant-message .message-content {
+    white-space: normal;
+}
+
+/* Headings */
+
+.assistant-message .message-content h1,
+.assistant-message .message-content h2,
+.assistant-message .message-content h3 {
+    margin: 16px 0 10px;
+    line-height: 1.4;
+    color: #312e81;
+}
+
+.assistant-message .message-content h1 {
+    font-size: 22px;
+}
+
+.assistant-message .message-content h2 {
+    font-size: 19px;
+}
+
+.assistant-message .message-content h3 {
+    font-size: 17px;
+}
+
+/* Paragraphs */
+
+.assistant-message .message-content p {
+    margin-bottom: 12px;
+}
+
+/* Bold text */
+
+.assistant-message .message-content strong {
+    color: #312e81;
+    font-weight: 700;
+}
+
+/* Lists */
+
+.assistant-message .message-content ul,
+.assistant-message .message-content ol {
+    margin: 10px 0 15px 25px;
+}
+
+.assistant-message .message-content li {
+    margin-bottom: 6px;
+    padding-left: 3px;
+}
+
+/* Links */
+
+.assistant-message .message-content a {
+    color: #4f46e5;
+    text-decoration: underline;
+}
+
+/* Blockquotes */
+
+.assistant-message .message-content blockquote {
+    border-left: 4px solid #818cf8;
+    padding: 10px 14px;
+    margin: 12px 0;
+    background: #e0e7ff;
+    border-radius: 5px;
+}
+
+
+/* ==============================
+   MARKDOWN TABLES
+============================== */
+
+.assistant-message .message-content table {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    border-collapse: collapse;
+    margin: 15px 0;
+    font-size: 14px;
+}
+
+.assistant-message .message-content th,
+.assistant-message .message-content td {
+    border: 1px solid #cbd5e1;
+    padding: 10px 13px;
+    text-align: left;
+    min-width: 100px;
+}
+
+.assistant-message .message-content th {
+    background: #4f46e5;
+    color: white;
+}
+
+.assistant-message .message-content tr:nth-child(even) {
+    background: #e0e7ff;
+}
+
+
+/* ==============================
+   CODE FORMATTING
+============================== */
+
+.assistant-message .message-content pre {
+    background: #1e293b;
+    color: #f8fafc;
+    padding: 15px;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 12px 0;
+}
+
+.assistant-message .message-content pre code {
+    background: transparent;
+    color: inherit;
+    padding: 0;
+}
+
+.assistant-message .message-content code {
+    background: #e0e7ff;
+    color: #4338ca;
+    padding: 3px 6px;
+    border-radius: 4px;
+    font-family: Consolas, monospace;
+    font-size: 13px;
+}
+
+
+/* ==============================
+   CHAT INPUT
+============================== */
+
+.chat-form {
+    display: flex;
+    gap: 10px;
+    padding: 18px;
+    border-top: 1px solid #e5e7eb;
+}
+
+.chat-form input {
+    flex: 1;
+    padding: 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    outline: none;
+    font-size: 15px;
+}
+
+.chat-form input:focus {
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 2px #e0e7ff;
+}
+
+.chat-form button {
+    background: #4f46e5;
+    color: white;
+    border: none;
+    padding: 0 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: 0.2s;
+}
+
+.chat-form button:hover {
+    background: #4338ca;
+}
+
+.chat-form button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+
+/* ==============================
+   TYPING INDICATOR
+============================== */
+
+.typing {
+    padding: 0 20px 10px;
+    color: #64748b;
+    font-size: 13px;
+}
+
+.hidden {
+    display: none;
+}
+
+
+/* ==============================
+   FOOTER
+============================== */
+
+footer {
+    text-align: center;
+    padding: 12px;
+    background: #f8fafc;
+    color: #64748b;
+    font-size: 12px;
+}
+
+
+/* ==============================
+   SCROLLBAR
+============================== */
+
+.chat-box::-webkit-scrollbar {
+    width: 7px;
+}
+
+.chat-box::-webkit-scrollbar-thumb {
+    background: #c7d2fe;
+    border-radius: 10px;
+}
+
+
+/* ==============================
+   RESPONSIVE DESIGN
+============================== */
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 0;
+    }
+
+    .app-container {
+        height: 100vh;
+        max-width: 100%;
+        border-radius: 0;
+    }
+
+    .header {
+        padding: 17px;
+    }
+
+    .header h1 {
+        font-size: 19px;
+    }
+
+    .header p {
+        font-size: 12px;
+    }
+
+    .message {
+        max-width: 95%;
+    }
+
+    .chat-form {
+        padding: 12px;
+    }
+
+    .chat-form input {
+        min-width: 0;
+    }
+
+    .chat-form button {
+        padding: 0 17px;
+    }
+}

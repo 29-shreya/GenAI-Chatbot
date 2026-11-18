@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GenAI Chatbot</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <!-- Header -->
+        <header class="header">
+            <div>
+                <h1>GenAI Chatbot</h1>
+                <p>Your AI-powered assistant</p>
+            </div>
+
+            <button id="clearButton" class="clear-button">
+                Clear Chat
+            </button>
+        </header>
+
+        <!-- Chat Messages -->
+        <main id="chatBox" class="chat-box">
+
+            <div class="message assistant-message">
+                <div class="message-content">
+                    Hello! 👋 I am your AI assistant.
+                    How can I help you today?
+                </div>
+            </div>
+
+        </main>
+
+        <!-- Typing Indicator -->
+        <div id="typingIndicator" class="typing hidden">
+            AI is thinking...
+        </div>
+
+        <!-- Message Input -->
+        <form id="chatForm" class="chat-form">
+
+            <input
+                type="text"
+                id="messageInput"
+                placeholder="Ask me anything..."
+                autocomplete="off"
+                maxlength="5000"
+                required
+            >
+
+            <button type="submit" id="sendButton">
+                Send
+            </button>
+
+        </form>
+
+        <!-- Footer -->
+        <footer>
+            Powered by Flask REST API and Groq AI
+        </footer>
+
+    </div>
+
+    <!-- Markdown Rendering Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js"></script>
+
+    <script>
+        // Safely convert AI Markdown responses into HTML.
+        window.renderMarkdown = function (content) {
+            const html = marked.parse(content || "");
+            return DOMPurify.sanitize(html);
+        };
+    </script>
+
+    <!-- Main JavaScript -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
